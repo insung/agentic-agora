@@ -18,6 +18,7 @@ Google Antigravity는 IDE(통합 개발 환경)를 "에이전트 중심(Agent-fi
 
 - **공식 사이트:** [antigravity.google](https://antigravity.google)
 - **다운로드:** [antigravity.google/download](https://antigravity.google/download)
+- **MCP 스토어 & 연동:** Antigravity 에디터 내 MCP Store 패널에서 직접 설정 가능
 
 ## ⚙️ 상세 설정 및 적용 경로
 
@@ -44,7 +45,10 @@ Google Antigravity는 IDE(통합 개발 환경)를 "에이전트 중심(Agent-fi
 
 #### 에이전트 아키텍처 (Agent Architecture)
 * **서브에이전트 (Subagent):** 메인 에이전트가 하위 태스크를 분리하여 격리된 컨텍스트에서 수행하도록 스폰합니다.
-* **에이전트 팀 (Agent Team):** 개별 에이전트들이 자율적으로 메시지를 주고받으며 병렬로 협력하는 구조입니다. MCP를 통해 에이전트 간의 통신과 자격 증명 공유가 가능해집니다.
+* **서브에이전트 협력 (Subagent Coordination):** Agent Manager가 개별 서브에이전트를 스폰(Spawn)하고 조율하여 복잡한 다단계 작업을 처리합니다. MCP는 **에이전트 간 직접 통신이 아닌**, 에이전트와 외부 데이터 소스(DB, API, 클라우드 서비스 등) 간의 연결에 사용됩니다.
+  - MCP 연동 예: AlloyDB, BigQuery, Spanner 등 외부 DB 또는 GitHub API 연결
+  - MCP 설정 파일: `~/.gemini/antigravity/mcp_config.json` (Antigravity 에디터의 MCP Store에서도 관리 가능)
+  - 참고: [antigravity.google](https://antigravity.google)
 
 ---
 

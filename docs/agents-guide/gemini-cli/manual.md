@@ -16,9 +16,13 @@ Gemini Command Line Interface (CLI)는 터미널 및 쉘 환경에 Gemini 모델
 
 ## 🔗 참고 및 공식 링크 (Official Links)
 
-- **공식 사이트:** [geminicli.com](https://geminicli.com)
-- **공식 문서:** [Gemini CLI Documentation](https://geminicli.com/docs)
-- **GitHub 리포지토리:** [google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli)
+- **공식 레퍼런스 (GitHub):** [google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli)
+- **공식 문서 인덱스:** [docs/](https://github.com/google-gemini/gemini-cli/blob/main/docs/get-started/index.md)
+- **Configuration Guide:** [docs/reference/configuration.md](https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md)
+- **MCP 연동 가이드:** [docs/tools/mcp-server.md](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md)
+- **Custom Extensions:** [docs/extensions/index.md](https://github.com/google-gemini/gemini-cli/blob/main/docs/extensions/index.md)
+
+> ⚠️ `geminicli.com`은 Google 공식 도메인이 아닙니다. 공식 레퍼런스는 위 GitHub 리포지토리를 참조하세요.
 
 ---
 
@@ -73,5 +77,11 @@ CLI의 핵심 구동 및 실험적 기능을 제어합니다.
 - `--prompt` (`-p`) : 한 줄의 프롬프트를 비대화식으로 실행 후 종료.
 - `--yolo` (`-y`) : **YOLO(You Only Live Once) 모드.** 모든 액션(파일 수정, 명령어 실행 등)을 사용자 확인 없이 자율적으로 수행합니다. (자동화 파이프라인용)
 
-### 멀티에이전트 및 확산 (Extensions)
-`gemini extensions`를 통해 배포된 패키지는 `gemini-extension.json` 매니페스트 설정을 통해 여러 도구와 서브에이전트를 묶어서 제공합니다. **Maestro**와 같은 오케스트레이터를 연동하면 복잡한 다중 에이전트 간의 업무 분담(Frontend, Backend, QA 등)과 하이 레벨 기획(Conductor)이 가능해집니다.
+### 멀티에이전트 및 확장 (Extensions & Agent2Agent)
+`gemini extensions`를 통해 배포된 패키지는 `gemini-extension.json` 매니페스트 설정을 통해 여러 도구와 서브에이전트를 하나의 번들로 묶어서 제공합니다. ([Extensions 공식 문서](https://github.com/google-gemini/gemini-cli/blob/main/docs/extensions/index.md))
+
+공식 멀티에이전트 기능으로는 **Remote Subagents (Agent2Agent)** 가 있으며, 이는 실험적(Experimental) 기능으로 분리된 에이전트 간 협력을 지원합니다. (`settings.json`의 `experimental.enableAgents: true` 활성화 필요)
+- 원격 서브에이전트는 `kind: remote` 및 `agent_card_url` 필드를 포함한 `.md` 파일로 정의합니다.
+- 위치: `.gemini/agents/*.md` (프로젝트) 또는 `~/.gemini/agents/*.md` (사용자)
+- 관련 명령어: `/agents list`, `/agents reload`, `/agents enable <name>`
+
