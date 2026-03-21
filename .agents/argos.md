@@ -1,6 +1,6 @@
 ---
 name: Argos
-role: Risk Management & QA
+role: Risk Management & Quality Assurance
 SOP: "Stress Test -> Logic Verification -> Security Audit"
 ---
 

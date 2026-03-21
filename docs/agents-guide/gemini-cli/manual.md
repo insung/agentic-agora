@@ -10,7 +10,7 @@ Gemini Command Line Interface (CLI)는 터미널 및 쉘 환경에 Gemini 모델
 | **Sub-agents (서브에이전트)**| 🟢 지원 | (실험적) 독립된 컨텍스트를 가진 하위 에이전트 생성 |
 | **Context (컨텍스트 주입)** | 🟢 지원 | `GEMINI.md` 파일을 통한 지침 제어 |
 | **MCP (컨텍스트 연동)** | 🟢 지원 | `settings.json`을 통한 전역/프로젝트별 도구 연동 |
-| **Multi-Agent (에이전트 팀)**| 🟢 지원 | 확장(Extensions) 및 Maestro 등을 통한 자율 협력 |
+| **Multi-Agent (에이전트 팀)**| 🟢 지원 | 확장(Extensions) 등을 통한 자율 협력 (Maestro는 비공식 서드파티 추정) |
 
 ---
 
@@ -42,16 +42,16 @@ CLI의 핵심 구동 및 실험적 기능을 제어합니다.
 
 ### 2. 에이전트 스킬 (Agent Skills)
 특정 전문 지식이나 반복적인 워크플로우를 패키징한 단위입니다.
-* **글로벌 스킬:** `~/.gemini/skills/`
-* **로컬 스킬:** `./.gemini/skills/`
+* **글로벌 스킬:** `~/.gemini/skills/` (⚠️ 미검증)
+* **로컬 스킬:** `./.gemini/skills/` (⚠️ 미검증)
 * **구조:** `SKILL.md`(지침)를 중심으로 `scripts/`, `references/` 폴더 등을 포함합니다. `gemini skills link` 명령어로 관리합니다.
 
 ### 3. 서브에이전트 구성 (Sub-agents)
 메인 세션의 컨텍스트를 오염시키지 않고 특정 태스크만 전문적으로 수행하는 하위 에이전트를 정의합니다.
 * **정의 방식:** YAML Frontmatter가 포함된 마크다운(`.md`) 파일을 사용합니다.
 * **파일 경로:**
-  - 글로벌: `~/.gemini/agents/*.md`
-  - 로컬: `./.gemini/agents/*.md`
+  - 글로벌: `~/.gemini/agents/*.md` (⚠️ 미검증)
+  - 로컬: `./.gemini/agents/*.md` (⚠️ 미검증)
 * **에이전트 정의 예시 (`security-auditor.md`):**
   ```markdown
   ---
@@ -78,7 +78,7 @@ CLI의 핵심 구동 및 실험적 기능을 제어합니다.
 - `--yolo` (`-y`) : **YOLO(You Only Live Once) 모드.** 모든 액션(파일 수정, 명령어 실행 등)을 사용자 확인 없이 자율적으로 수행합니다. (자동화 파이프라인용)
 
 ### 멀티에이전트 및 확장 (Extensions & Agent2Agent)
-`gemini extensions`를 통해 배포된 패키지는 `gemini-extension.json` 매니페스트 설정을 통해 여러 도구와 서브에이전트를 하나의 번들로 묶어서 제공합니다. ([Extensions 공식 문서](https://github.com/google-gemini/gemini-cli/blob/main/docs/extensions/index.md))
+`gemini extensions`를 통해 배포된 패키지는 `gemini-extension.json` 매니페스트 설정을 통해 여러 도구와 서브에이전트를 하나의 번들로 묶어서 제공합니다. ([Extensions 공식 문서](https://github.com/google-gemini/gemini-cli/blob/main/docs/extensions/index.md)) (Maestro 등 오케스트레이터의 경우 서드파티 커뮤니티 플러그인일 가능성이 높습니다.)
 
 공식 멀티에이전트 기능으로는 **Remote Subagents (Agent2Agent)** 가 있으며, 이는 실험적(Experimental) 기능으로 분리된 에이전트 간 협력을 지원합니다. (`settings.json`의 `experimental.enableAgents: true` 활성화 필요)
 - 원격 서브에이전트는 `kind: remote` 및 `agent_card_url` 필드를 포함한 `.md` 파일로 정의합니다.

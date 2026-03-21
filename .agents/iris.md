@@ -1,6 +1,6 @@
 ---
 name: Iris
-role: UX/UI Design Lead
+role: UX/UI Design & Experience Lead
 SOP: "Empathize -> Visualize -> Iterate"
 ---
 

@@ -10,7 +10,7 @@ Google Antigravity는 IDE(통합 개발 환경)를 "에이전트 중심(Agent-fi
 | **Workflows (워크플로우)**| 🟢 지원 | 저장된 프롬프트/단계 시퀀스 (`/명령어`) |
 | **MCP (컨텍스트 연동)** | 🟢 지원 | 외부 데이터 및 툴 연동 표준 규격 |
 | **Subagent (서브에이전트)** | 🟢 지원 | 메인 에이전트가 단일 목적의 하위 에이전트 스폰(Spawn) 가능 |
-| **Agent Team (에이전트 팀)** | 🟢 지원 | 에이전트 간 직접 통신 및 병렬 자율 협력 가능 |
+| **Agent Team (에이전트 팀)** | 🟢 지원 | 에이전트 간 직접 통신 및 병렬 자율 협력 가능 (공식 문서 내 추정) |
 
 ---
 
@@ -25,9 +25,9 @@ Google Antigravity는 IDE(통합 개발 환경)를 "에이전트 중심(Agent-fi
 ### 1. 스킬 (Skills)
 에이전트의 지식과 능력을 확장하는 재사용 가능한 패키지입니다. 
 * **글로벌 스킬 (Global):**
-  - **경로:** `~/.gemini/antigravity/skills/<skill-folder>/`
+  - **경로:** `~/.gemini/antigravity/skills/<skill-folder>/` (⚠️ 미검증)
 * **로컬 스킬 (Local):**
-  - **경로:** `<워크스페이스_루트>/.agents/skills/<skill-folder>/`
+  - **경로:** `<워크스페이스_루트>/.agents/skills/<skill-folder>/` (⚠️ 미검증)
 * **구성:** 반드시 `SKILL.md` 파일을 포함해야 하며, YAML 프론트매터(name, description)를 통해 정의됩니다.
 
 ### 2. 워크플로우 (Workflows)
@@ -40,8 +40,8 @@ Google Antigravity는 IDE(통합 개발 환경)를 "에이전트 중심(Agent-fi
 
 ### 3. MCP (Model Context Protocol) 연동
 외부 데이터 소스나 도구를 에이전트와 연결하는 개방형 표준 프로토콜입니다.
-* **글로벌 설정:** `~/.gemini/antigravity/mcp.json` 
-* **로컬 설정:** `<워크스페이스_루트>/.agents/mcp.json`
+* **글로벌 설정:** `~/.gemini/antigravity/mcp_config.json` 
+* **로컬 설정:** `<워크스페이스_루트>/.agents/mcp_config.json`
 
 #### 에이전트 아키텍처 (Agent Architecture)
 * **서브에이전트 (Subagent):** 메인 에이전트가 하위 태스크를 분리하여 격리된 컨텍스트에서 수행하도록 스폰합니다.
